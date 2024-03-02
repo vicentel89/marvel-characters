@@ -1,0 +1,12 @@
+.container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: to-rem(84px);
+  padding: 0 to-rem(16px);
+  background-color: var(--black-color);
+
+  @media (--laptop-and-above) {
+    padding: 0 to-rem(48px);
+  }
+}

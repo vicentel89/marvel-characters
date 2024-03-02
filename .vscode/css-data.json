@@ -1,0 +1,9 @@
+{
+  "version": 1.0,
+  "atDirectives": [
+    {
+      "name": "@custom-media",
+      "description": "Defines a custom media query"
+    }
+  ]
+}

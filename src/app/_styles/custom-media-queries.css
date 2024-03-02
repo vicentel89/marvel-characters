@@ -1,0 +1,7 @@
+@custom-media --tablet-only (480px <= width < 768px);
+@custom-media --tablet-and-above (width >= 480px);
+
+@custom-media --laptop-only (768px <= width < 992px);
+@custom-media --laptop-and-above (width >= 768px);
+
+@custom-media --desktop-only (width >= 992px);

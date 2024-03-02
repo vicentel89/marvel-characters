@@ -1,0 +1,68 @@
+:root {
+  /* Colors */
+  --primary-color: #ec1d24;
+  --white-color: #ffffff;
+  --black-color: #000000;
+
+  /* Fonts */
+  --font-size-body-sm: to-rem(12px);
+  --font-size-body-md: to-rem(14px);
+  --font-size-body-lg: to-rem(16px);
+  --font-size-heading-sm: to-rem(24px);
+  --font-size-heading-md: to-rem(32px);
+  --font-size-heading-lg: to-rem(40px);
+
+  --font-weight-regular: 400;
+  --font-weight-medium: 500;
+  --font-weight-bold: 700;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+* {
+  margin: 0;
+}
+
+html {
+  font-size: 100%;
+}
+
+body {
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+
+img,
+picture,
+video,
+canvas,
+svg {
+  display: block;
+  max-width: 100%;
+}
+
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
+
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  overflow-wrap: break-word;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
