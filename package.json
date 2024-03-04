@@ -19,6 +19,7 @@
     "@types/node": "^20",
     "@types/react": "^18",
     "@types/react-dom": "^18",
+    "clsx": "^2.1.0",
     "eslint": "^8",
     "eslint-config-next": "14.1.1",
     "postcss-custom-media": "^10.0.3",

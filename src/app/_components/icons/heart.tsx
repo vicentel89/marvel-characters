@@ -1,13 +1,29 @@
-export default function HeartIcon(props: React.ComponentProps<'svg'>) {
+import { IconProps } from './types';
+
+export default function HeartIcon({ variant = 'filled', strokeWidth: _, ...props }: IconProps) {
+  const BASE_WIDTH = 24;
+  const BASE_HEIGHT = 22;
+  const STROKE_WIDTH = 2;
+
+  const variantProps = {
+    filled: {
+      fill: 'currentColor',
+      height: BASE_HEIGHT,
+      viewBox: `0 0 ${BASE_WIDTH} ${BASE_HEIGHT}`,
+    },
+    outlined: {
+      strokeWidth: STROKE_WIDTH,
+      stroke: 'currentColor',
+      fill: 'none',
+      height: BASE_HEIGHT - STROKE_WIDTH,
+      viewBox: `${-STROKE_WIDTH / 2} ${-STROKE_WIDTH / 2} ${BASE_WIDTH + STROKE_WIDTH} ${
+        BASE_HEIGHT + STROKE_WIDTH
+      }`,
+    },
+  };
+
   return (
-    <svg
-      width="24"
-      height="22"
-      strokeWidth="2"
-      viewBox="0 0 24 22"
-      xmlns="http://www.w3.org/2000/svg"
-      {...props}
-    >
+    <svg width="auto" xmlns="http://www.w3.org/2000/svg" {...variantProps[variant]} {...props}>
       <path
         fillRule="evenodd"
         clipRule="evenodd"

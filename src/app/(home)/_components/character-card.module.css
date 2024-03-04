@@ -1,0 +1,91 @@
+.container {
+  --info-height: to-rem(56px);
+  --divider-height: to-rem(6px);
+  --transition-properties: all 0.2s linear;
+
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: to-rem(246px);
+  padding-top: var(--divider-height);
+  overflow: hidden;
+  cursor: pointer;
+
+  &:hover {
+    .image {
+      transform: scale3d(1.05, 1.05, 1);
+    }
+
+    .info {
+      &::before {
+        height: 100%;
+      }
+    }
+
+    .iconActive {
+      color: var(--white-color);
+    }
+  }
+}
+
+.image {
+  width: 100%;
+  height: calc(100% - var(--info-height) - var(--divider-height));
+  object-fit: cover;
+  transform: scale3d(1, 1, 1);
+  transform-origin: top center;
+  transition: var(--transition-properties);
+}
+
+.info {
+  --base-padding: to-rem(16px);
+
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  height: calc(var(--info-height) + var(--divider-height));
+  padding: calc(var(--divider-height) + var(--base-padding)) var(--base-padding) var(--base-padding);
+  background-color: var(--black-color);
+  clip-path: polygon(
+    0 0,
+    100% 0,
+    100% calc(100% - to-rem(12px)),
+    calc(100% - to-rem(12px)) 100%,
+    0 100%
+  );
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: var(--divider-height);
+    z-index: -10;
+    background: var(--primary-color);
+    transition: var(--transition-properties);
+  }
+}
+
+.name {
+  font-size: var(--font-size-body-md);
+  font-weight: var(--font-weight-regular);
+  color: var(--white-color);
+  text-transform: uppercase;
+}
+
+.favoriteButton {
+  margin-top: to-rem(-4px);
+  margin-right: to-rem(-4px);
+}
+
+.icon {
+  height: to-rem(16px);
+  color: var(--white-color);
+  transition: var(--transition-properties);
+}
+
+.iconActive {
+  color: var(--primary-color);
+}

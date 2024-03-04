@@ -1,0 +1,7 @@
+.container {
+  padding: to-rem(24px) to-rem(16px);
+
+  @media (--tablet-and-above) {
+    padding: to-rem(48px);
+  }
+}
