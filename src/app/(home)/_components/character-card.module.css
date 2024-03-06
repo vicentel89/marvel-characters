@@ -13,7 +13,7 @@
 
   &:hover {
     .image {
-      transform: scale3d(1.05, 1.05, 1);
+      transform: scale(1.05);
     }
 
     .info {
@@ -32,7 +32,7 @@
   width: 100%;
   height: calc(100% - var(--info-height) - var(--divider-height));
   object-fit: cover;
-  transform: scale3d(1, 1, 1);
+  transform: scale(1);
   transform-origin: top center;
   transition: var(--transition-properties);
 }

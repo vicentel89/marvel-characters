@@ -1,9 +1,6 @@
 /* eslint-disable @next/next/no-img-element */
-import clsx from 'clsx';
-
-import IconButton from '@/app/_components/icon-button';
-import HeartIcon from '@/app/_components/icons/heart';
 import classes from './character-card.module.css';
+import FavoriteButton from '@/app/_components/favorite-button';
 
 const CharacterCard = () => {
   return (
@@ -15,26 +12,16 @@ const CharacterCard = () => {
       />
       <div className={classes.info}>
         <h2 className={classes.name}>Name</h2>
-        <FavoriteButton isActive />
+        <FavoriteButton
+          isActive
+          classes={{
+            button: classes.favoriteButton,
+            icon: classes.icon,
+            iconActive: classes.iconActive,
+          }}
+        />
       </div>
     </div>
-  );
-};
-
-const FavoriteButton = ({ isActive }: { isActive?: boolean }) => {
-  const iconVariant = isActive ? 'filled' : 'outlined';
-
-  return (
-    <IconButton
-      className={classes.favoriteButton}
-      icon={
-        <HeartIcon
-          className={clsx(classes.icon, { [classes.iconActive]: isActive })}
-          variant={iconVariant}
-        />
-      }
-      aria-label="Add to favorites"
-    />
   );
 };
 
