@@ -1,0 +1,31 @@
+.container {
+  width: to-rem(164px);
+
+  @media (--laptop-and-above) {
+    width: to-rem(180px);
+  }
+}
+
+.image {
+  width: 100%;
+  height: to-rem(246px);
+  margin-bottom: to-rem(12px);
+
+  @media (--laptop-and-above) {
+    height: to-rem(268px);
+  }
+}
+
+.title {
+  margin-bottom: to-rem(8px);
+  font-size: var(--font-size-body-lg);
+  font-weight: var(--font-weight-medium);
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
+}
+
+.year {
+  font-size: var(--font-size-body-sm);
+}
