@@ -3,7 +3,7 @@ import { IconProps } from './types';
 export default function HeartIcon({ variant = 'filled', strokeWidth: _, ...props }: IconProps) {
   const BASE_WIDTH = 24;
   const BASE_HEIGHT = 22;
-  const STROKE_WIDTH = 2;
+  const STROKE_WIDTH = 4;
 
   const variantProps = {
     filled: {
