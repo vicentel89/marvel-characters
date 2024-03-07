@@ -1,19 +1,16 @@
 .container {
-  --info-height: to-rem(56px);
-  --divider-height: to-rem(6px);
   --transition-properties: all 0.2s linear;
 
   display: flex;
   flex-direction: column;
   width: 100%;
-  height: to-rem(246px);
-  padding-top: var(--divider-height);
+  height: 100%;
   overflow: hidden;
   cursor: pointer;
 
   &:hover {
     .image {
-      transform: scale(1.05);
+      transform: scale3d(1.05, 1.05, 1);
     }
 
     .info {
@@ -30,21 +27,22 @@
 
 .image {
   width: 100%;
-  height: calc(100% - var(--info-height) - var(--divider-height));
+  aspect-ratio: 22 / 25;
   object-fit: cover;
-  transform: scale(1);
+  transform: scale3d(1.01, 1.01, 1);
   transform-origin: top center;
   transition: var(--transition-properties);
 }
 
 .info {
+  --divider-height: to-rem(6px);
   --base-padding: to-rem(16px);
 
   position: relative;
   display: flex;
   justify-content: space-between;
   width: 100%;
-  height: calc(var(--info-height) + var(--divider-height));
+  height: calc(to-rem(56px) + var(--divider-height));
   padding: calc(var(--divider-height) + var(--base-padding)) var(--base-padding) var(--base-padding);
   background-color: var(--black-color);
   clip-path: polygon(

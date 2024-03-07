@@ -1,0 +1,25 @@
+.container {
+  margin-bottom: to-rem(36px);
+}
+
+.inputContainer {
+  display: flex;
+  align-items: center;
+  gap: to-rem(12px);
+  padding: to-rem(12px) 0 to-rem(8px);
+  margin-bottom: to-rem(12px);
+  border-bottom: 1px solid var(--black-color);
+}
+
+.input {
+  &::placeholder {
+    font-size: var(--font-size-body-lg);
+    color: var(--neutral-color);
+    text-transform: uppercase;
+  }
+}
+
+.result {
+  font-size: var(--font-size-body-sm);
+  text-transform: uppercase;
+}

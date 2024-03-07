@@ -4,6 +4,7 @@
   :root {
     /* Colors */
     --primary-color: #ec1d24;
+    --neutral-color: #aaaaaa;
     --white-color: #ffffff;
     --black-color: #000000;
 
@@ -53,6 +54,8 @@
   textarea,
   select {
     font: inherit;
+    border: none;
+    outline: none;
   }
 
   p,
