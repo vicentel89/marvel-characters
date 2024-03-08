@@ -1,8 +1,9 @@
 import { Suspense } from 'react';
 import { Roboto_Condensed } from 'next/font/google';
 
-import Header from './_components/header';
 import './_styles/global.css';
+import Header from './_components/header';
+import Footer from './_components/footer';
 
 const robotoCondensed = Roboto_Condensed({
   weight: ['400', '500', '700'],
@@ -23,6 +24,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <Suspense>
           <main>{children}</main>
         </Suspense>
+        <Footer />
       </body>
     </html>
   );

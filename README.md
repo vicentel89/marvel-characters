@@ -2,17 +2,26 @@
 
 ## Description
 
-This is a simple project to show a list of Marvel characters and their details. It uses the [Marvel API](https://developer.marvel.com/documentation/getting_started) to fetch the data.
+This is a project that shows a list of Marvel characters and their details. It uses the [Marvel API](https://developer.marvel.com/documentation/getting_started) to fetch the data. The project is built using Server Components of [Next.js](https://nextjs.org/). It uses hexagonal architecture to separate the layers of the application.
 
 ## Running the project locally
 
-First, install the dependencies:
+1. Get an API key from [Marvel](https://developer.marvel.com/documentation/getting_started).
+
+2. Create a `.env` file in the root of the project and add the following lines with your API keys:
+
+```env
+MARVEL_PUBLIC_API_KEY=your-public-api-key
+MARVEL_PRIVATE_API_KEY=your-private-api-key
+```
+
+3. Install the dependencies:
 
 ```bash
 pnpm install
 ```
 
-Then, run the development server:
+4. Run the development server:
 
 ```bash
 pnpm dev

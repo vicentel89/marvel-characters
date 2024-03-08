@@ -1,25 +1,28 @@
 /* eslint-disable @next/next/no-img-element */
-import classes from './character-card.module.css';
+import { Character } from '@/modules/characters/domain/character';
 import FavoriteButton from '@/app/_components/favorite-button';
+import classes from './character-card.module.css';
 
-const CharacterCard = () => {
+type CharacterCardProps = {
+  character: Character;
+};
+
+const CharacterCard = async ({ character }: CharacterCardProps) => {
   return (
     <div className={classes.container}>
-      <img
-        src={'https://cdn.marvel.com/content/1x/002irm_ons_crd_03.jpg'}
-        alt=""
-        className={classes.image}
-      />
+      <img src={character.image} alt="" className={classes.image} />
       <div className={classes.info}>
-        <h2 className={classes.name}>Name</h2>
-        <FavoriteButton
-          isActive
-          classes={{
-            button: classes.favoriteButton,
-            icon: classes.icon,
-            iconActive: classes.iconActive,
-          }}
-        />
+        <div className={classes.nameWrapper}>
+          <h2 className={classes.name}>{character.name}</h2>
+          <FavoriteButton
+            isActive
+            classes={{
+              button: classes.favoriteButton,
+              icon: classes.icon,
+              iconActive: classes.iconActive,
+            }}
+          />
+        </div>
       </div>
     </div>
   );
