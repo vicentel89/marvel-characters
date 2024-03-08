@@ -1,7 +1,13 @@
+import { config, getCharacters } from '@/modules/characters/application';
 import classes from './search.module.css';
 import SearchIcon from '@/app/_components/icons/search';
 
-const Search = () => {
+const Search = async () => {
+  const characters = await getCharacters(config.characterRepository);
+
+  const resultCount = characters.length;
+  const resultText = resultCount === 1 ? 'result' : 'results';
+
   return (
     <div className={classes.container}>
       <div className={classes.inputContainer}>
@@ -16,7 +22,7 @@ const Search = () => {
         />
       </div>
       <span className={classes.result} id="search-results" role="log" aria-live="polite">
-        1 Result
+        {resultCount} {resultText}
       </span>
     </div>
   );

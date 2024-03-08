@@ -1,6 +1,9 @@
 import crypto from 'crypto';
 
-export function generateMarvelApiUrl(endpoint: string): string {
+export function generateMarvelApiUrl(
+  endpoint: string,
+  params?: { [key: string]: string | number }
+): string {
   const publicKey = process.env.MARVEL_PUBLIC_API_KEY;
   const privateKey = process.env.MARVEL_PRIVATE_API_KEY;
 
@@ -14,5 +17,9 @@ export function generateMarvelApiUrl(endpoint: string): string {
     .update(ts + privateKey + publicKey)
     .digest('hex');
 
-  return `http://gateway.marvel.com/v1/public/${endpoint}?ts=${ts}&apikey=${publicKey}&hash=${hash}`;
+  const additionalParams = Object.entries(params || {})
+    .map(([key, value]) => `&${key}=${value}`)
+    .join('');
+
+  return `http://gateway.marvel.com/v1/public/${endpoint}?ts=${ts}&apikey=${publicKey}&hash=${hash}${additionalParams}`;
 }
