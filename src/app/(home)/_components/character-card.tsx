@@ -1,4 +1,5 @@
 import Image from 'next/image';
+import clsx from 'clsx';
 
 import { Character } from '@/modules/characters/domain/character';
 import FavoriteButton from '@/app/_components/favorite-button';
@@ -10,6 +11,7 @@ type CharacterCardProps = {
 
 const CharacterCard = async ({ character }: CharacterCardProps) => {
   const ariaLabelId = `character-name-${character.id}`;
+  const isFallbackImage = character.image.includes('image_not_available');
 
   return (
     <div className={classes.container}>
@@ -18,7 +20,7 @@ const CharacterCard = async ({ character }: CharacterCardProps) => {
           src={character.image}
           fill
           sizes="(max-width: 480px) 50vw, (max-width: 768px) 25vw, 15vw"
-          className={classes.image}
+          className={clsx(classes.image, { [classes.fallbackImage]: isFallbackImage })}
           alt=""
           aria-labelledby={ariaLabelId}
         />

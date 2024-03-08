@@ -38,6 +38,11 @@
   transition: var(--transition-properties);
 }
 
+.fallbackImage {
+  object-position: left;
+  transform-origin: center;
+}
+
 .info {
   --divider-height: to-rem(6px);
 

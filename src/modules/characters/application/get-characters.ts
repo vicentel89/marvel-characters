@@ -1,3 +1,5 @@
+import 'server-only';
+
 import { CharacterRepository } from '../domain/character-repository';
 
 export async function getCharacters(characterRepository: CharacterRepository) {
