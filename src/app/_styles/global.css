@@ -1,4 +1,4 @@
-@layer theme, components;
+@layer theme, components, utilities;
 
 @layer theme {
   :root {
@@ -36,6 +36,8 @@
   }
 
   body {
+    position: relative;
+    min-height: 100vh;
     line-height: 1.2;
     -webkit-font-smoothing: antialiased;
   }
@@ -55,7 +57,10 @@
   select {
     font: inherit;
     border: none;
-    outline: none;
+
+    :not(:focus) {
+      outline: none;
+    }
   }
 
   p,
@@ -77,5 +82,19 @@
     list-style: none;
     padding: 0;
     margin: 0;
+  }
+}
+
+@layer utilities {
+  .sr-only {
+    border: 0;
+    clip: rect(0 0 0 0);
+    height: auto;
+    margin: 0;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+    width: 1px;
+    white-space: nowrap;
   }
 }

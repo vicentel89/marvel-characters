@@ -5,9 +5,11 @@ import HeartIcon from '../icons/heart';
 
 const FavoriteCounter = () => {
   return (
-    <Link href="/" className={classes.container}>
-      <HeartIcon className={classes.icon} />
-      <span className={classes.counter}>0</span>
+    <Link href="/favorites" title="Favorite characters" className={classes.container}>
+      <HeartIcon className={classes.icon} title="Favorite characters" />
+      <span className={classes.counter} aria-hidden="true">
+        0
+      </span>
     </Link>
   );
 };

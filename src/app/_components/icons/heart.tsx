@@ -1,6 +1,12 @@
 import { IconProps } from './types';
 
-export default function HeartIcon({ variant = 'filled', strokeWidth: _, ...props }: IconProps) {
+export default function HeartIcon({
+  title,
+  titleId,
+  variant = 'filled',
+  strokeWidth: _,
+  ...props
+}: IconProps) {
   const BASE_WIDTH = 24;
   const BASE_HEIGHT = 22;
   const STROKE_WIDTH = 4;
@@ -23,7 +29,14 @@ export default function HeartIcon({ variant = 'filled', strokeWidth: _, ...props
   };
 
   return (
-    <svg width="auto" xmlns="http://www.w3.org/2000/svg" {...variantProps[variant]} {...props}>
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      role="img"
+      aria-labelledby={titleId}
+      {...variantProps[variant]}
+      {...props}
+    >
+      <title id={titleId}>{title}</title>
       <path
         fillRule="evenodd"
         clipRule="evenodd"

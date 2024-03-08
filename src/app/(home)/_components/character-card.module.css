@@ -24,11 +24,15 @@
   }
 }
 
-.image {
+.imageWrapper {
+  position: relative;
   width: 100%;
   aspect-ratio: 22 / 25;
-  object-fit: cover;
   cursor: pointer;
+}
+
+.image {
+  object-fit: cover;
   transform: scale3d(1.01, 1.01, 1);
   transform-origin: top center;
   transition: var(--transition-properties);

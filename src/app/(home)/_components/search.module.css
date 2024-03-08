@@ -12,6 +12,8 @@
 }
 
 .input {
+  width: 100%;
+
   &::placeholder {
     font-size: var(--font-size-body-lg);
     color: var(--neutral-color);

@@ -8,6 +8,7 @@ export default async function Home() {
 
   return (
     <Container>
+      <h1 className="sr-only">Marvel characters</h1>
       <Search />
       <CharacterList characters={characters} />
     </Container>

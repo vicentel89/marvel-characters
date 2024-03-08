@@ -1,4 +1,5 @@
-/* eslint-disable @next/next/no-img-element */
+import Image from 'next/image';
+
 import { Character } from '@/modules/characters/domain/character';
 import FavoriteButton from '@/app/_components/favorite-button';
 import classes from './character-card.module.css';
@@ -8,13 +9,27 @@ type CharacterCardProps = {
 };
 
 const CharacterCard = async ({ character }: CharacterCardProps) => {
+  const ariaLabelId = `character-name-${character.id}`;
+
   return (
     <div className={classes.container}>
-      <img src={character.image} alt="" className={classes.image} />
+      <div className={classes.imageWrapper}>
+        <Image
+          src={character.image}
+          fill
+          sizes="(max-width: 480px) 50vw, (max-width: 768px) 25vw, 15vw"
+          className={classes.image}
+          alt=""
+          aria-labelledby={ariaLabelId}
+        />
+      </div>
       <div className={classes.info}>
         <div className={classes.nameWrapper}>
-          <h2 className={classes.name}>{character.name}</h2>
+          <h2 id={ariaLabelId} className={classes.name}>
+            {character.name}
+          </h2>
           <FavoriteButton
+            character={character}
             isActive
             classes={{
               button: classes.favoriteButton,

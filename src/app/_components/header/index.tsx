@@ -7,8 +7,9 @@ import FavoriteCounter from './favorite-counter';
 const Header = () => {
   return (
     <header className={classes.container}>
-      <Link href="/" title="Marvel characters">
-        <Logo />
+      <Link href="/" title="Marvel characters" itemScope>
+        <span className="sr-only">Marvel characters</span>
+        <Logo aria-hidden="true" />
       </Link>
       <FavoriteCounter />
     </header>

@@ -1,6 +1,6 @@
 .container {
+  position: absolute;
+  bottom: to-rem(12px);
+  right: to-rem(24px);
   font-size: var(--font-size-body-sm);
-  text-align: right;
-  margin-right: to-rem(24px);
-  margin-bottom: to-rem(12px);
 }

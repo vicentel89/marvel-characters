@@ -1,5 +1,5 @@
 .container {
-  padding: to-rem(24px) to-rem(16px);
+  padding: to-rem(24px) to-rem(16px) to-rem(48px);
 
   @media (--tablet-and-above) {
     padding: to-rem(48px);

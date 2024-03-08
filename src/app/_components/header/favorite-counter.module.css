@@ -1,5 +1,6 @@
 .container {
   display: flex;
+  align-items: center;
   gap: to-rem(8px);
   padding: to-rem(4px) to-rem(8px);
 }

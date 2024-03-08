@@ -1,4 +1,4 @@
-const Logo = () => {
+const Logo = (props: React.ComponentProps<'svg'>) => {
   return (
     <svg
       width="130"
@@ -6,6 +6,8 @@ const Logo = () => {
       viewBox="0 0 130 52"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
+      role="img"
+      {...props}
     >
       <g clipPath="url(#clip0_1770_531)">
         <path d="M130 0H0V52H130V0Z" fill="#EC1D24" />
