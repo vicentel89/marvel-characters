@@ -1,20 +1,36 @@
-/* eslint-disable @next/next/no-img-element */
-import classes from './character-resume.module.css';
-import FavoriteButton from '@/app/_components/favorite-button';
+import Image from 'next/image';
 
-const CharacterResume = () => {
+import { Character } from '@/modules/characters/domain/character';
+import FavoriteButton from '@/app/_components/favorite-button';
+import classes from './character-resume.module.css';
+
+type CharacterResumeProps = {
+  character: Character;
+};
+
+const CharacterResume = ({ character }: CharacterResumeProps) => {
+  const ariaLabelId = `character-name-${character.id}`;
+
   return (
     <section className={classes.container}>
       <div className={classes.content}>
-        <img
-          src={'https://cdn.marvel.com/content/1x/002irm_ons_crd_03.jpg'}
-          alt=""
-          className={classes.image}
-        />
+        <div className={classes.imageWrapper}>
+          <Image
+            src={character.image}
+            fill
+            sizes="(max-width: 480px) 100vw, (max-width: 768px) 278px, 320px"
+            className={classes.image}
+            alt=""
+            aria-labelledby={ariaLabelId}
+          />
+        </div>
         <div className={classes.info}>
           <div className={classes.nameContainer}>
-            <h1 className={classes.name}>Name</h1>
+            <h1 id={ariaLabelId} className={classes.name}>
+              {character.name}
+            </h1>
             <FavoriteButton
+              character={character}
               isActive
               classes={{
                 button: classes.favoriteButton,
@@ -24,9 +40,7 @@ const CharacterResume = () => {
             />
           </div>
           <p className={classes.description}>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec vehicula, sapien nec
-            gravida elementum, eros ante fermentum nunc, vitae luctus libero nunc nec justo. Nullam
-            at est nec nunc ullamcorper luctus. Nulla facilisi. Nulla facilisi. Nulla facilisi.
+            {character.description || 'No description available'}
           </p>
         </div>
       </div>

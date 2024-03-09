@@ -1,4 +1,5 @@
 import Image from 'next/image';
+import Link from 'next/link';
 import clsx from 'clsx';
 
 import { Character } from '@/modules/characters/domain/character';
@@ -15,7 +16,7 @@ const CharacterCard = async ({ character }: CharacterCardProps) => {
 
   return (
     <div className={classes.container}>
-      <div className={classes.imageWrapper}>
+      <Link href={`/character/${character.id}`} className={classes.imageWrapper}>
         <Image
           src={character.image}
           fill
@@ -24,7 +25,7 @@ const CharacterCard = async ({ character }: CharacterCardProps) => {
           alt=""
           aria-labelledby={ariaLabelId}
         />
-      </div>
+      </Link>
       <div className={classes.info}>
         <div className={classes.nameWrapper}>
           <h2 id={ariaLabelId} className={classes.name}>

@@ -34,5 +34,7 @@ async function getById(id: number) {
   const res = await fetch(apiUrl);
   const { data } = await res.json();
 
-  return data as Character;
+  const character = mapApiResponseToCharacter(data.results);
+
+  return character[0] as Character;
 }
