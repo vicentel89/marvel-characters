@@ -1,10 +1,12 @@
-import { config, getCharacters } from '@/modules/characters/application';
+import { Character } from '@/modules/characters/domain/character';
 import classes from './character-list.module.css';
 import CharacterCard from './character-card';
 
-const CharacterList = async () => {
-  const characters = await getCharacters(config.characterRepository);
+type CharacterListProps = {
+  characters: Character[];
+};
 
+const CharacterList = async ({ characters }: CharacterListProps) => {
   return (
     <ul className={classes.container}>
       {characters.map((character) => (

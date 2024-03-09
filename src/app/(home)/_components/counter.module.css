@@ -1,0 +1,4 @@
+.text {
+  font-size: var(--font-size-body-sm);
+  text-transform: uppercase;
+}

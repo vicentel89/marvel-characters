@@ -57,3 +57,7 @@ TO DO: Layers
 As server components are new to the React ecosystem, some tools do not fully support them. So we use End-to-End Testing as [recommended by the Next.js team](https://nextjs.org/docs/app/building-your-application/testing#async-server-components).
 
 TO DO
+
+## Known issues
+
+App router slow performance when using dynamic route: [#50332](https://github.com/vercel/next.js/issues/50332) [#48748](https://github.com/vercel/next.js/issues/48748)

@@ -19,9 +19,8 @@
     color: var(--neutral-color);
     text-transform: uppercase;
   }
-}
 
-.result {
-  font-size: var(--font-size-body-sm);
-  text-transform: uppercase;
+  &:focus {
+    outline: none;
+  }
 }

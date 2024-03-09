@@ -1,18 +1,43 @@
-import { config, getCharacters } from '@/modules/characters/application';
-import classes from './search.module.css';
+'use client';
+import { useEffect, useState } from 'react';
+import { useRouter, useSearchParams, usePathname } from 'next/navigation';
+
+import { useDebounce } from '@/app/_utils/debounce';
 import SearchIcon from '@/app/_components/icons/search';
+import classes from './search.module.css';
 
-const Search = async () => {
-  const characters = await getCharacters(config.characterRepository);
+const Search = ({ children }: { children?: React.ReactNode }) => {
+  const router = useRouter();
+  const pathname = usePathname();
+  const searchParams = useSearchParams();
+  const searchQuery = searchParams.get('searchQuery');
+  const [searchValue, setSearchValue] = useState('');
 
-  const resultCount = characters.length;
-  const resultText = resultCount === 1 ? 'result' : 'results';
+  useEffect(() => {
+    setSearchValue(searchQuery || '');
+  }, [searchQuery]);
+
+  const debouncedReplace = useDebounce(() => {
+    const url = searchValue ? `${pathname}?searchQuery=${searchValue}` : pathname;
+    router.replace(url);
+  }, 200);
+
+  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    event.preventDefault();
+
+    const newSearchValue = event.target.value;
+    setSearchValue(newSearchValue);
+
+    debouncedReplace();
+  };
 
   return (
     <div className={classes.container}>
       <div className={classes.inputContainer}>
         <SearchIcon aria-hidden="true" />
         <input
+          value={searchValue}
+          onChange={handleChange}
           className={classes.input}
           type="search"
           placeholder="Search a character..."
@@ -21,9 +46,7 @@ const Search = async () => {
           aria-controls="search-results"
         />
       </div>
-      <span className={classes.result} id="search-results" role="log" aria-live="polite">
-        {resultCount} {resultText}
-      </span>
+      {children}
     </div>
   );
 };

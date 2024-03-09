@@ -1,9 +1,8 @@
 import crypto from 'crypto';
 
-export function generateMarvelApiUrl(
-  endpoint: string,
-  params?: { [key: string]: string | number }
-): string {
+import { BaseEndpointParams } from './endpoint-params';
+
+export function generateMarvelApiUrl(endpoint: string, params?: BaseEndpointParams): string {
   const publicKey = process.env.MARVEL_PUBLIC_API_KEY;
   const privateKey = process.env.MARVEL_PRIVATE_API_KEY;
 
