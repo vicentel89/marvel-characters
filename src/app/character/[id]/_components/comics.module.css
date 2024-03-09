@@ -35,8 +35,16 @@
   scrollbar-width: thin;
   scrollbar-color: var(--primary-color) transparent;
   scroll-snap-type: x mandatory;
+
+  @media (--laptop-and-above) {
+    scroll-snap-type: x none;
+  }
 }
 
 .item {
   scroll-snap-align: start;
+
+  @media (--laptop-and-above) {
+    scroll-snap-align: none;
+  }
 }

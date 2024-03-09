@@ -2,7 +2,6 @@ import { generateMarvelApiUrl } from '@/modules/core/infrastructure/marvel-api/g
 import { SearchParams } from '@/modules/core/domain/search-params';
 import { BaseEndpointParams } from '@/modules/core/infrastructure/marvel-api/endpoint-params';
 import { CharacterRepository } from '../domain/character-repository';
-import { Character } from '../domain/character';
 import { mapApiResponseToCharacter } from './utils';
 
 export function createCharacterApiRepository(): CharacterRepository {
@@ -36,5 +35,5 @@ async function getById(id: number) {
 
   const character = mapApiResponseToCharacter(data.results);
 
-  return character[0] as Character;
+  return character[0];
 }

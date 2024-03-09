@@ -6,7 +6,7 @@ type CharacterListProps = {
   characters: Character[];
 };
 
-const CharacterList = async ({ characters }: CharacterListProps) => {
+const CharacterList = ({ characters }: CharacterListProps) => {
   return (
     <ul className={classes.container}>
       {characters.map((character) => (

@@ -1,9 +1,12 @@
 .container {
+  position: sticky;
+  top: 0;
   display: flex;
   justify-content: space-between;
   align-items: center;
   height: to-rem(84px);
   padding: 0 to-rem(16px);
+  z-index: 10;
   background-color: var(--black-color);
 
   @media (--laptop-and-above) {

@@ -1,20 +1,32 @@
-/* eslint-disable @next/next/no-img-element */
+import Image from 'next/image';
+
+import { Comic } from '@/modules/comics/domain/comic';
 import classes from './comic-card.module.css';
 
-const ComicCard = () => {
+type ComicCardProps = {
+  comic: Comic;
+};
+
+const ComicCard = ({ comic }: ComicCardProps) => {
+  const ariaLabelId = `comic-name-${comic.id}`;
+
   return (
     <div className={classes.container}>
-      <img
-        src="https://cdn.marvel.com/u/prod/marvel/i/mg/6/10/6554ef0de2312/detail.jpg"
-        alt="Comic title"
-        className={classes.image}
-      />
-      <div>
-        <h2 className={classes.title}>
-          Comic title: Lorem ipsum dolor sit amet consectetur. Lorem ipsum dolor sit amet
-          consectetur. Lorem ipsum dolor sit amet consectetur.
+      <div className={classes.imageWrapper}>
+        <Image
+          src={comic.image}
+          fill
+          sizes="(max-width: 480px) 50vw, (max-width: 768px) 25vw, 20vw"
+          className={classes.image}
+          alt=""
+          aria-labelledby={ariaLabelId}
+        />
+      </div>
+      <div className={classes.info}>
+        <h2 className={classes.title} id={ariaLabelId}>
+          {comic.title}
         </h2>
-        <span className={classes.year}>Year</span>
+        <span className={classes.year}>{comic.year}</span>
       </div>
     </div>
   );

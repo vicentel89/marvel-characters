@@ -10,7 +10,7 @@ type CharacterCardProps = {
   character: Character;
 };
 
-const CharacterCard = async ({ character }: CharacterCardProps) => {
+const CharacterCard = ({ character }: CharacterCardProps) => {
   const ariaLabelId = `character-name-${character.id}`;
   const isFallbackImage = character.image.includes('image_not_available');
 
