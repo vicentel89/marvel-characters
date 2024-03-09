@@ -60,4 +60,7 @@ TO DO
 
 ## Known issues
 
-App router slow performance when using dynamic route: [#50332](https://github.com/vercel/next.js/issues/50332) [#48748](https://github.com/vercel/next.js/issues/48748)
+- When searching characters, there is delay to start fetching the data. This is because the search is triggered when the query parameter in the URL changes and there is an issue with the app router that makes it slow to update the URL.
+
+  This issue is being tracked in the Next.js github.
+  App router slow performance when using dynamic route: [#50332](https://github.com/vercel/next.js/issues/50332) [#48748](https://github.com/vercel/next.js/issues/48748)

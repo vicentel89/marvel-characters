@@ -116,6 +116,7 @@
 .icon {
   height: to-rem(22px);
   color: var(--white-color);
+  transition: all 0.2s linear;
 }
 
 .iconActive {

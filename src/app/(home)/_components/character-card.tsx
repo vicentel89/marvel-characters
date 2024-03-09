@@ -3,6 +3,7 @@ import Link from 'next/link';
 import clsx from 'clsx';
 
 import { Character } from '@/modules/characters/domain/character';
+import { getFavoriteCharacters } from '@/app/character/[id]/_actions/utils';
 import FavoriteButton from '@/app/_components/favorite-button';
 import classes from './character-card.module.css';
 
@@ -13,6 +14,9 @@ type CharacterCardProps = {
 const CharacterCard = ({ character }: CharacterCardProps) => {
   const ariaLabelId = `character-name-${character.id}`;
   const isFallbackImage = character.image.includes('image_not_available');
+
+  const favoriteCharacters = getFavoriteCharacters();
+  const isFavorite = favoriteCharacters.some((favorite) => favorite === character.id);
 
   return (
     <div className={classes.container}>
@@ -33,7 +37,7 @@ const CharacterCard = ({ character }: CharacterCardProps) => {
           </h2>
           <FavoriteButton
             character={character}
-            isActive
+            isFavorite={isFavorite}
             classes={{
               button: classes.favoriteButton,
               icon: classes.icon,

@@ -4,6 +4,7 @@ import clsx from 'clsx';
 import { Character } from '@/modules/characters/domain/character';
 import FavoriteButton from '@/app/_components/favorite-button';
 import classes from './character-resume.module.css';
+import { getFavoriteCharacters } from '../_actions/utils';
 
 type CharacterResumeProps = {
   character: Character;
@@ -12,6 +13,9 @@ type CharacterResumeProps = {
 const CharacterResume = ({ character }: CharacterResumeProps) => {
   const ariaLabelId = `character-name-${character.id}`;
   const isFallbackImage = character.image.includes('image_not_available');
+
+  const favoriteCharacters = getFavoriteCharacters();
+  const isFavorite = favoriteCharacters.some((favorite) => favorite === character.id);
 
   return (
     <section className={classes.container}>
@@ -33,7 +37,7 @@ const CharacterResume = ({ character }: CharacterResumeProps) => {
             </h1>
             <FavoriteButton
               character={character}
-              isActive
+              isFavorite={isFavorite}
               classes={{
                 button: classes.favoriteButton,
                 icon: classes.icon,
