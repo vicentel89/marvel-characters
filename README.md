@@ -57,10 +57,3 @@ TO DO: Layers
 As server components are new to the React ecosystem, some tools do not fully support them. So we use End-to-End Testing as [recommended by the Next.js team](https://nextjs.org/docs/app/building-your-application/testing#async-server-components).
 
 TO DO
-
-## Known issues
-
-- When searching characters, there is delay to start fetching the data. This is because the search is triggered when the query parameter in the URL changes and there is an issue with the app router that makes it slow to update the URL.
-
-  This issue is being tracked in the Next.js github.
-  App router slow performance when using dynamic route: [#50332](https://github.com/vercel/next.js/issues/50332) [#48748](https://github.com/vercel/next.js/issues/48748)
