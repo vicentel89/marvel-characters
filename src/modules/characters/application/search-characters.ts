@@ -3,15 +3,15 @@ import 'server-only';
 import { SearchParams } from '@/modules/core/domain/search-params';
 import { CharacterRepository } from '../domain/character-repository';
 
-interface GetCharactersOptions {
+interface searchCharactersOptions {
   searchParams: SearchParams;
 }
 
-export async function getCharacters(
+export async function searchCharacters(
   characterRepository: CharacterRepository,
-  options?: GetCharactersOptions
+  options?: searchCharactersOptions
 ) {
-  const characters = await characterRepository.getAll(options?.searchParams);
+  const characters = await characterRepository.searchMany(options?.searchParams);
 
   return characters;
 }

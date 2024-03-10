@@ -1,6 +1,6 @@
 import { redirect } from 'next/navigation';
 
-import { config, getCharacters } from '@/modules/characters/application';
+import { config, searchCharacters } from '@/modules/characters/application';
 import { SearchParams } from '@/modules/core/domain/search-params';
 import CharacterList from '../_components/character-list';
 import Search from '../_components/search';
@@ -18,9 +18,9 @@ export default async function Home({
   // Redirect to home if has invalid slug
   if (!!slug && slug[0] !== 'favorites') redirect('/');
 
-  // Get characters
-  let characters = await getCharacters(config.characterRepository, {
-    searchParams: searchParams.searchQuery ? searchParams : {},
+  // Search characters
+  let characters = await searchCharacters(config.characterRepository, {
+    searchParams: searchParams.search ? searchParams : {},
   });
 
   // Filter non-favorite characters

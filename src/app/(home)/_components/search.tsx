@@ -12,15 +12,15 @@ const Search = ({ children }: { children?: React.ReactNode }) => {
   const router = useRouter();
   const pathname = usePathname();
   const searchParams = useSearchParams();
-  const searchQuery = searchParams.get('searchQuery');
+  const search = searchParams.get('search');
   const [searchValue, setSearchValue] = useState('');
 
   useEffect(() => {
-    setSearchValue(searchQuery || '');
-  }, [searchQuery]);
+    setSearchValue(search || '');
+  }, [search]);
 
   const debouncedReplace = useDebounce(() => {
-    const url = searchValue ? `${pathname}?searchQuery=${searchValue}` : pathname;
+    const url = searchValue ? `${pathname}?search=${searchValue}` : pathname;
     startTransition(() => router.replace(url));
   }, 300);
 

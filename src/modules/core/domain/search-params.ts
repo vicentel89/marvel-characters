@@ -1,5 +1,5 @@
 export interface SearchParams {
-  searchQuery?: string;
+  search?: string;
   limit?: number;
   offset?: number;
 }

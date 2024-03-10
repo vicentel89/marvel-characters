@@ -3,8 +3,11 @@ import Link from 'next/link';
 import classes from './index.module.css';
 import Logo from './logo';
 import FavoriteCounter from './favorite-counter';
+import { preloadGetAllCharacters, config } from '@/modules/characters/application';
 
 const Header = () => {
+  preloadGetAllCharacters(config.characterRepository);
+
   return (
     <header className={classes.container}>
       <Link href="/" title="Marvel characters" itemScope>
