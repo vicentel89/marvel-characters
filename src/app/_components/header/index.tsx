@@ -10,7 +10,9 @@ const Header = () => {
       <Link href="/" title="Marvel characters" itemScope>
         <Logo title="Marvel characters" titleId="logo" />
       </Link>
-      <FavoriteCounter />
+      <Link href="/favorites" title="Favorite characters">
+        <FavoriteCounter />
+      </Link>
     </header>
   );
 };

@@ -11,7 +11,7 @@ import HeartIcon from '../icons/heart';
 
 type FavoriteButtonProps = {
   character: Character;
-  isFavorite: boolean;
+  onOptimisticChange?: (optimisticIsFavorite: boolean) => void;
   classes?: {
     button?: string;
     icon?: string;
@@ -19,24 +19,29 @@ type FavoriteButtonProps = {
   };
 };
 
-const FavoriteButton = ({ character, isFavorite, classes }: FavoriteButtonProps) => {
+const FavoriteButton = ({ character, onOptimisticChange, classes }: FavoriteButtonProps) => {
   // Change favorite state
   const [isPending, startTransition] = useTransition();
   const [optimisticIsFavorite, setOptimisticIsFavorite] = useOptimistic<boolean, boolean>(
-    isFavorite,
+    character.isFavorite,
     (_currentState, optimisticValue) => optimisticValue
   );
 
+  const changeOptimisticIsFavorite = (optimisticIsFavorite: boolean) => {
+    setOptimisticIsFavorite(optimisticIsFavorite);
+    onOptimisticChange?.(optimisticIsFavorite);
+  };
+
   const handleClick = async () => {
-    if (isFavorite) {
+    if (character.isFavorite) {
       await removeFavorite(character.id);
       startTransition(() => {
-        setOptimisticIsFavorite(false);
+        changeOptimisticIsFavorite(false);
       });
     } else {
       await addFavorite(character.id);
       startTransition(() => {
-        setOptimisticIsFavorite(true);
+        changeOptimisticIsFavorite(true);
       });
     }
   };

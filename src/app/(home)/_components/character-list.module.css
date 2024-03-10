@@ -6,17 +6,3 @@
   width: 100%;
   gap: var(--grid-gap);
 }
-
-.item {
-  --grid-columns: 2;
-
-  @media (--tablet-and-above) {
-    --grid-columns: 4;
-  }
-
-  @media (--laptop-and-above) {
-    --grid-columns: 7;
-  }
-
-  width: calc((100% - var(--grid-gap) * (var(--grid-columns) - 1)) / var(--grid-columns));
-}

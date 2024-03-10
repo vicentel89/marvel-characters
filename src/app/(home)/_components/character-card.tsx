@@ -1,9 +1,12 @@
+'use client';
+
+import { useOptimistic } from 'react';
+import { useParams } from 'next/navigation';
 import Image from 'next/image';
 import Link from 'next/link';
 import clsx from 'clsx';
 
 import { Character } from '@/modules/characters/domain/character';
-import { getFavoriteCharacters } from '@/app/character/[id]/_actions/utils';
 import FavoriteButton from '@/app/_components/favorite-button';
 import classes from './character-card.module.css';
 
@@ -15,11 +18,19 @@ const CharacterCard = ({ character }: CharacterCardProps) => {
   const ariaLabelId = `character-name-${character.id}`;
   const isFallbackImage = character.image.includes('image_not_available');
 
-  const favoriteCharacters = getFavoriteCharacters();
-  const isFavorite = favoriteCharacters.some((favorite) => favorite === character.id);
+  // If is favorites page and it is removed from favorites, hide the card
+  const params = useParams<{ slug?: string[] }>();
+  const isFavoritesPage = params?.slug?.[0] === 'favorites';
+
+  const [mustDisplay, setMustDisplay] = useOptimistic<boolean, boolean>(
+    true,
+    (_currentState, optimisticValue) => optimisticValue
+  );
+
+  if (isFavoritesPage && !mustDisplay) return null;
 
   return (
-    <div className={classes.container}>
+    <li className={classes.container}>
       <Link href={`/character/${character.id}`} className={classes.imageWrapper}>
         <Image
           src={character.image}
@@ -37,7 +48,7 @@ const CharacterCard = ({ character }: CharacterCardProps) => {
           </h3>
           <FavoriteButton
             character={character}
-            isFavorite={isFavorite}
+            onOptimisticChange={setMustDisplay}
             classes={{
               button: classes.favoriteButton,
               icon: classes.icon,
@@ -46,7 +57,7 @@ const CharacterCard = ({ character }: CharacterCardProps) => {
           />
         </div>
       </div>
-    </div>
+    </li>
   );
 };
 

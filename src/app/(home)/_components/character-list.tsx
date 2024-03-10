@@ -12,9 +12,7 @@ const CharacterList = ({ characters }: CharacterListProps) => {
       <h2 className="sr-only">Found characters</h2>
       <ul className={classes.container}>
         {characters.map((character) => (
-          <li key={character.id} className={classes.item}>
-            <CharacterCard character={character} />
-          </li>
+          <CharacterCard key={character.id} character={character} />
         ))}
       </ul>
     </section>

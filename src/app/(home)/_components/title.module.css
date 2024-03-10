@@ -1,0 +1,10 @@
+.favorites {
+  font-size: var(--font-size-heading-sm);
+  font-weight: var(--font-weight-bold);
+  text-transform: uppercase;
+  margin-bottom: to-rem(24px);
+
+  @media (--tablet-and-above) {
+    font-size: var(--font-size-heading-md);
+  }
+}

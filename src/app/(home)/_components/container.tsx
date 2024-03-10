@@ -7,12 +7,7 @@ type ContainerProps = {
 };
 
 const Container = ({ children }: ContainerProps) => {
-  return (
-    <div className={clsx(classes.container)}>
-      <h1 className="sr-only">Marvel characters</h1>
-      {children}
-    </div>
-  );
+  return <div className={clsx(classes.container)}>{children}</div>;
 };
 
 export default Container;

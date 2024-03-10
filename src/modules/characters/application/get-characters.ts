@@ -11,7 +11,7 @@ export async function getCharacters(
   characterRepository: CharacterRepository,
   options?: GetCharactersOptions
 ) {
-  const data = await characterRepository.getAll(options?.searchParams);
+  const characters = await characterRepository.getAll(options?.searchParams);
 
-  return data;
+  return characters;
 }
