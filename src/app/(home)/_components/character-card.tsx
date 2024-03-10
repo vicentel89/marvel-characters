@@ -32,9 +32,9 @@ const CharacterCard = ({ character }: CharacterCardProps) => {
       </Link>
       <div className={classes.info}>
         <div className={classes.nameWrapper}>
-          <h2 id={ariaLabelId} className={classes.name}>
+          <h3 id={ariaLabelId} className={classes.name}>
             {character.name}
-          </h2>
+          </h3>
           <FavoriteButton
             character={character}
             isFavorite={isFavorite}

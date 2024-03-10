@@ -34,22 +34,27 @@ const Search = ({ children }: { children?: React.ReactNode }) => {
   };
 
   return (
-    <div className={classes.container}>
-      <div className={clsx(classes.inputContainer, { [classes.inputContainerLoading]: isLoading })}>
+    <section className={classes.container}>
+      <h2 id="character-search" className="sr-only">
+        Search a character
+      </h2>
+      <div
+        className={clsx(classes.inputContainer, { [classes.inputContainerLoading]: isLoading })}
+        role="search"
+      >
         <SearchIcon aria-hidden="true" />
         <input
           value={searchValue}
           onChange={handleChange}
           className={classes.input}
-          type="search"
           placeholder="Search a character..."
-          aria-label="Search a character"
+          aria-labelledby="character-search"
           autoComplete="off"
           aria-controls="search-results"
         />
       </div>
       {children}
-    </div>
+    </section>
   );
 };
 

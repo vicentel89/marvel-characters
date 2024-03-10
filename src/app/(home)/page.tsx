@@ -14,7 +14,6 @@ export default async function Home({ searchParams }: { searchParams: SearchParam
 
   return (
     <Container>
-      <h1 className="sr-only">Marvel characters</h1>
       <Search>
         <Suspense>
           <Counter count={characters.length} />

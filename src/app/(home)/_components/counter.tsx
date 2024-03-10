@@ -9,7 +9,7 @@ const Counter = ({ count }: CounterProps) => {
 
   return (
     <span className={classes.text} id="search-results" role="log" aria-live="polite">
-      {count} {resultText}
+      {`${count} ${resultText}`}
     </span>
   );
 };

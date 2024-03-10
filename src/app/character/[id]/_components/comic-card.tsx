@@ -8,8 +8,6 @@ type ComicCardProps = {
 };
 
 const ComicCard = ({ comic }: ComicCardProps) => {
-  const ariaLabelId = `comic-name-${comic.id}`;
-
   return (
     <div className={classes.container}>
       <div className={classes.imageWrapper}>
@@ -19,13 +17,10 @@ const ComicCard = ({ comic }: ComicCardProps) => {
           sizes="(max-width: 480px) 50vw, (max-width: 768px) 25vw, 20vw"
           className={classes.image}
           alt=""
-          aria-labelledby={ariaLabelId}
         />
       </div>
       <div className={classes.info}>
-        <h2 className={classes.title} id={ariaLabelId}>
-          {comic.title}
-        </h2>
+        <h3 className={classes.title}>{comic.title}</h3>
         <span className={classes.year}>{comic.year}</span>
       </div>
     </div>

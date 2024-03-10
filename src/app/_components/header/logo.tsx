@@ -1,4 +1,9 @@
-const Logo = (props: React.ComponentProps<'svg'>) => {
+type LogoProps = {
+  title: string;
+  titleId: string;
+} & React.ComponentProps<'svg'>;
+
+const Logo = ({ title, titleId, ...props }: LogoProps) => {
   return (
     <svg
       width="130"
@@ -7,8 +12,10 @@ const Logo = (props: React.ComponentProps<'svg'>) => {
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
       role="img"
+      aria-labelledby={titleId}
       {...props}
     >
+      <title id={titleId}>{title}</title>
       <g clipPath="url(#clip0_1770_531)">
         <path d="M130 0H0V52H130V0Z" fill="#EC1D24" />
         <path

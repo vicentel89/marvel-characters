@@ -18,14 +18,14 @@ const CharacterPage = async ({
   const [character, comics] = await Promise.all([characterData, comicsData]);
 
   return (
-    <>
+    <article>
       <Suspense>
         <CharacterResume character={character} />
       </Suspense>
       <Suspense>
         <Comics comics={comics} />
       </Suspense>
-    </>
+    </article>
   );
 };
 

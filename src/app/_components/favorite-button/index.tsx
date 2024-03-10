@@ -44,7 +44,7 @@ const FavoriteButton = ({ character, isFavorite, classes }: FavoriteButtonProps)
   // Setup
   const iconVariant = optimisticIsFavorite ? 'filled' : 'outlined';
   const activeClass = classes?.iconActive || '';
-  const ariaLabel = optimisticIsFavorite
+  const label = optimisticIsFavorite
     ? `Remove ${character.name} from favorites`
     : `Add ${character.name} to favorites`;
 
@@ -55,14 +55,14 @@ const FavoriteButton = ({ character, isFavorite, classes }: FavoriteButtonProps)
       className={classes?.button}
       icon={
         <HeartIcon
-          title={character.name}
+          title={label}
+          titleId={`favorite-${character.id}`}
           variant={iconVariant}
           className={clsx(classes?.icon, {
             [activeClass]: classes?.iconActive && optimisticIsFavorite,
           })}
         />
       }
-      aria-label={ariaLabel}
     />
   );
 };

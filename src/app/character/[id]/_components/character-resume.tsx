@@ -11,14 +11,13 @@ type CharacterResumeProps = {
 };
 
 const CharacterResume = ({ character }: CharacterResumeProps) => {
-  const ariaLabelId = `character-name-${character.id}`;
   const isFallbackImage = character.image.includes('image_not_available');
 
   const favoriteCharacters = getFavoriteCharacters();
   const isFavorite = favoriteCharacters.some((favorite) => favorite === character.id);
 
   return (
-    <section className={classes.container}>
+    <div className={classes.container}>
       <div className={classes.content}>
         <div className={classes.imageWrapper}>
           <Image
@@ -27,14 +26,11 @@ const CharacterResume = ({ character }: CharacterResumeProps) => {
             sizes="(max-width: 480px) 100vw, (max-width: 768px) 278px, 320px"
             className={clsx(classes.image, { [classes.fallbackImage]: isFallbackImage })}
             alt=""
-            aria-labelledby={ariaLabelId}
           />
         </div>
         <div className={classes.info}>
           <div className={classes.nameContainer}>
-            <h1 id={ariaLabelId} className={classes.name}>
-              {character.name}
-            </h1>
+            <h1 className={classes.name}>{character.name}</h1>
             <FavoriteButton
               character={character}
               isFavorite={isFavorite}
@@ -45,12 +41,13 @@ const CharacterResume = ({ character }: CharacterResumeProps) => {
               }}
             />
           </div>
-          <p className={classes.description}>
-            {character.description || 'No description available'}
-          </p>
+          <section className={classes.description}>
+            <h2 className="sr-only">Resume</h2>
+            <p>{character.description || 'No description available'}</p>
+          </section>
         </div>
       </div>
-    </section>
+    </div>
   );
 };
 

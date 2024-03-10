@@ -9,7 +9,7 @@ type ComicsProps = {
 const Comics = ({ comics }: ComicsProps) => {
   return (
     <section className={classes.container}>
-      <h1 className={classes.title}>Comics</h1>
+      <h2 className={classes.title}>Comics</h2>
       {!!comics[0] && (
         <ul className={classes.list}>
           {comics.map((comic) => (
