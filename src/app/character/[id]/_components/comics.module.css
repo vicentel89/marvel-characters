@@ -48,3 +48,37 @@
     scroll-snap-align: none;
   }
 }
+
+@keyframes fadeIn {
+  from {
+    opacity: 0.15;
+  }
+  to {
+    opacity: 0.35;
+  }
+}
+
+.loadingSkeleton {
+  width: 100%;
+  padding-bottom: to-rem(24px);
+  overflow: clip;
+
+  div {
+    display: flex;
+    width: max-content;
+    gap: to-rem(16px);
+    overflow: clip;
+
+    div {
+      width: to-rem(164px);
+      height: to-rem(246px);
+      background-color: var(--neutral-color);
+      animation: fadeIn 0.8s ease-out infinite alternate;
+
+      @media (--laptop-and-above) {
+        width: to-rem(180px);
+        height: to-rem(268px);
+      }
+    }
+  }
+}

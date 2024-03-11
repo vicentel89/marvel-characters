@@ -37,10 +37,10 @@
   margin-bottom: to-rem(8px);
   font-size: var(--font-size-body-lg);
   font-weight: var(--font-weight-medium);
+  overflow: hidden;
   display: -webkit-box;
   -webkit-box-orient: vertical;
   -webkit-line-clamp: 2;
-  overflow: hidden;
 }
 
 .year {

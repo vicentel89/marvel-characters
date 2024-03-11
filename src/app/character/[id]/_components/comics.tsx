@@ -1,15 +1,29 @@
+import { Suspense } from 'react';
+
+import { getComicsByCharacterId, config } from '@/modules/comics/application';
 import classes from './comics.module.css';
 import ComicCard from './comic-card';
-import { Comic } from '@/modules/comics/domain/comic';
 
 type ComicsProps = {
-  comics: Comic[];
+  characterId: number;
 };
 
-const Comics = ({ comics }: ComicsProps) => {
+const Comics = ({ characterId }: ComicsProps) => {
   return (
     <section className={classes.container}>
       <h2 className={classes.title}>Comics</h2>
+      <Suspense fallback={<Loading />}>
+        <ComicList characterId={characterId} />
+      </Suspense>
+    </section>
+  );
+};
+
+const ComicList = async ({ characterId }: ComicsProps) => {
+  const comics = await getComicsByCharacterId(config.comicRepository, +characterId);
+
+  return (
+    <>
       {!!comics[0] && (
         <ul className={classes.list}>
           {comics.map((comic) => (
@@ -21,8 +35,18 @@ const Comics = ({ comics }: ComicsProps) => {
       )}
 
       {!comics[0] && <span>No comics found</span>}
-    </section>
+    </>
   );
 };
+
+const Loading = () => (
+  <div className={classes.loadingSkeleton}>
+    <div>
+      {Array.from({ length: 5 }).map((_, index) => (
+        <div key={`comic-loading-${index}`} />
+      ))}
+    </div>
+  </div>
+);
 
 export default Comics;

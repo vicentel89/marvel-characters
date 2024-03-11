@@ -24,12 +24,12 @@
     "cypress": "^13.6.6",
     "eslint": "^8",
     "eslint-config-next": "14.1.1",
-    "eslint-plugin-unused-imports": "^3.1.0",
     "postcss-custom-media": "^10.0.3",
     "postcss-flexbugs-fixes": "^5.0.2",
     "postcss-nesting": "^12.0.4",
     "postcss-preset-env": "^9.4.0",
     "postcss-rem": "^3.0.0",
-    "typescript": "^5"
+    "typescript": "^5",
+    "typescript-eslint": "^7.1.1"
   }
 }

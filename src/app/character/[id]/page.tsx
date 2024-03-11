@@ -1,5 +1,4 @@
-import { config as characterConfig, getCharacterById } from '@/modules/characters/application';
-import { config as comicConfig, getComicsByCharacterId } from '@/modules/comics/application';
+import { getCharacterById, config } from '@/modules/characters/application';
 import CharacterResume from './_components/character-resume';
 import Comics from './_components/comics';
 
@@ -10,15 +9,12 @@ const CharacterPage = async ({
     id: string;
   };
 }) => {
-  const characterData = getCharacterById(characterConfig.characterRepository, +id);
-  const comicsData = getComicsByCharacterId(comicConfig.comicRepository, +id);
-
-  const [character, comics] = await Promise.all([characterData, comicsData]);
+  const character = await getCharacterById(config.characterRepository, +id);
 
   return (
     <article>
       <CharacterResume character={character} />
-      <Comics comics={comics} />
+      <Comics characterId={+id} />
     </article>
   );
 };

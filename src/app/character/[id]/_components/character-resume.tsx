@@ -19,6 +19,7 @@ const CharacterResume = ({ character }: CharacterResumeProps) => {
           <Image
             src={character.image}
             fill
+            priority
             sizes="(max-width: 480px) 100vw, (max-width: 768px) 278px, 320px"
             className={clsx(classes.image, { [classes.fallbackImage]: isFallbackImage })}
             alt=""
