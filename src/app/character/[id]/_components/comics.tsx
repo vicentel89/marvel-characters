@@ -10,7 +10,7 @@ type ComicsProps = {
 
 const Comics = ({ characterId }: ComicsProps) => {
   return (
-    <section className={classes.container}>
+    <section className={classes.container} data-test="comics-section">
       <h2 className={classes.title}>Comics</h2>
       <Suspense fallback={<Loading />}>
         <ComicList characterId={characterId} />

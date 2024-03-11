@@ -1,10 +1,9 @@
-describe('Home', () => {
+describe('Home page', () => {
   beforeEach(() => {
     cy.visit('/');
   });
 
   it('displays the home page with its layout', () => {
-    cy.visit('/');
     cy.get('h1').contains('Marvel characters');
     cy.get('a').contains('Marvel characters').as('homeLink');
     cy.get('@homeLink').get('svg title').contains('Marvel characters');
@@ -21,7 +20,7 @@ describe('Home', () => {
     cy.getBySel('character-card').should('have.length', 50);
   });
 
-  it.only('navigates to a character page', () => {
+  it('navigates to a character page', () => {
     cy.getBySel('character-card')
       .first()
       .within(() => {
@@ -124,15 +123,18 @@ describe('Home', () => {
 
       cy.get('@secondCharacterName').then((characterName) => {
         const name = characterName as unknown as string;
-        cy.getBySel('character-search-input').clear().type(name);
+        cy.getBySel('character-search-input').clear();
+        cy.wait(1000);
+        cy.getBySel('character-search-input').type(name);
         cy.wait(1000);
         cy.getBySel('character-card').should('have.length', 1).contains(name);
       });
 
       cy.get('@thirdCharacterName').then((characterName) => {
         const name = characterName as unknown as string;
-        cy.getBySel('character-search-input').clear().type(name);
+        cy.getBySel('character-search-input').clear();
         cy.wait(1000);
+        cy.getBySel('character-search-input').type(name);
         cy.getBySel('character-card').should('not.exist');
       });
     });

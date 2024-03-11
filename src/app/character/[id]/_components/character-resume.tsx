@@ -13,7 +13,7 @@ const CharacterResume = ({ character }: CharacterResumeProps) => {
   const isFallbackImage = character.image.includes('image_not_available');
 
   return (
-    <div className={classes.container}>
+    <div className={classes.container} data-test="character-resume">
       <div className={classes.content}>
         <div className={classes.imageWrapper}>
           <Image
