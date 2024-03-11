@@ -1,7 +1,6 @@
 'use client';
 
 import { useOptimistic } from 'react';
-import { useParams } from 'next/navigation';
 import Image from 'next/image';
 import Link from 'next/link';
 import clsx from 'clsx';
@@ -18,16 +17,12 @@ const CharacterCard = ({ character }: CharacterCardProps) => {
   const ariaLabelId = `character-name-${character.id}`;
   const isFallbackImage = character.image.includes('image_not_available');
 
-  // If is favorites page and it is removed from favorites, hide the card
-  const params = useParams<{ slug?: string[] }>();
-  const isFavoritesPage = params?.slug?.[0] === 'favorites-legacy';
-
   const [mustDisplay, setMustDisplay] = useOptimistic<boolean, boolean>(
     true,
     (_currentState, optimisticValue) => optimisticValue
   );
 
-  if (isFavoritesPage && !mustDisplay) return null;
+  if (!mustDisplay) return null;
 
   return (
     <li className={classes.container}>
@@ -35,6 +30,7 @@ const CharacterCard = ({ character }: CharacterCardProps) => {
         <Image
           src={character.image}
           fill
+          priority
           sizes="(max-width: 480px) 50vw, (max-width: 768px) 25vw, 15vw"
           className={clsx(classes.image, { [classes.fallbackImage]: isFallbackImage })}
           alt=""

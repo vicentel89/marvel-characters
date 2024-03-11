@@ -9,6 +9,7 @@ const nextConfig = {
         pathname: '/u/prod/marvel/i/mg/**',
       },
     ],
+    deviceSizes: [480, 768, 1024, 1920],
   },
 };
 
