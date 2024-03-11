@@ -20,7 +20,7 @@ const CharacterCard = ({ character }: CharacterCardProps) => {
 
   // If is favorites page and it is removed from favorites, hide the card
   const params = useParams<{ slug?: string[] }>();
-  const isFavoritesPage = params?.slug?.[0] === 'favorites';
+  const isFavoritesPage = params?.slug?.[0] === 'favorites-legacy';
 
   const [mustDisplay, setMustDisplay] = useOptimistic<boolean, boolean>(
     true,

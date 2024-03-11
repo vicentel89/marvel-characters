@@ -1,5 +1,5 @@
 'use client';
-import { useEffect, useState, useTransition } from 'react';
+import { useState, useTransition } from 'react';
 import { useRouter, useSearchParams, usePathname } from 'next/navigation';
 import clsx from 'clsx';
 
@@ -13,11 +13,7 @@ const Search = ({ children }: { children?: React.ReactNode }) => {
   const pathname = usePathname();
   const searchParams = useSearchParams();
   const search = searchParams.get('search');
-  const [searchValue, setSearchValue] = useState('');
-
-  useEffect(() => {
-    setSearchValue(search || '');
-  }, [search]);
+  const [searchValue, setSearchValue] = useState(search || '');
 
   const debouncedReplace = useDebounce(() => {
     const url = searchValue ? `${pathname}?search=${searchValue}` : pathname;
