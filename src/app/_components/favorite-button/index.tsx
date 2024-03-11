@@ -58,6 +58,7 @@ const FavoriteButton = ({ character, onOptimisticChange, classes }: FavoriteButt
       onClick={handleClick}
       disabled={isPending}
       className={classes?.button}
+      data-test="favorite-button"
       icon={
         <HeartIcon
           title={label}

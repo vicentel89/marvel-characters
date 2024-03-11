@@ -12,7 +12,7 @@ const FavoriteCounter = () => {
         title="Favorite characters"
         titleId="favorite-characters"
       />
-      <span className={classes.counter} aria-hidden="true">
+      <span className={classes.counter} aria-hidden="true" data-test="favorite-counter">
         {favoriteCharacters.length}
       </span>
     </div>

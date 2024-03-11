@@ -45,8 +45,9 @@ const Search = ({ children }: { children?: React.ReactNode }) => {
           className={classes.input}
           placeholder="Search a character..."
           aria-labelledby="character-search"
-          autoComplete="off"
           aria-controls="search-results"
+          autoComplete="off"
+          data-test="character-search-input"
         />
       </div>
       {children}

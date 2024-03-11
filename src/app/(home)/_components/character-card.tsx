@@ -25,8 +25,12 @@ const CharacterCard = ({ character }: CharacterCardProps) => {
   if (!mustDisplay) return null;
 
   return (
-    <li className={classes.container}>
-      <Link href={`/character/${character.id}`} className={classes.imageWrapper}>
+    <li className={classes.container} data-test="character-card">
+      <Link
+        href={`/character/${character.id}`}
+        className={classes.imageWrapper}
+        data-test="character-card-link"
+      >
         <Image
           src={character.image}
           fill
@@ -39,7 +43,7 @@ const CharacterCard = ({ character }: CharacterCardProps) => {
       </Link>
       <div className={classes.info}>
         <div className={classes.nameWrapper}>
-          <h3 id={ariaLabelId} className={classes.name}>
+          <h3 id={ariaLabelId} className={classes.name} data-test="character-card-name">
             {character.name}
           </h3>
           <FavoriteButton
