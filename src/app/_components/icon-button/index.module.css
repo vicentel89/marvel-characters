@@ -9,8 +9,10 @@
     transform: scale3d(1, 1, 1);
     transition: all 0.1s ease-out;
 
-    &:hover {
-      transform: scale3d(1.1, 1.1, 1);
+    @media (hover: hover) and (pointer: fine) {
+      &:hover {
+        transform: scale3d(1.1, 1.1, 1);
+      }
     }
 
     &[disabled] {

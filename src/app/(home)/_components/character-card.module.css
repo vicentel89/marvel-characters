@@ -16,19 +16,21 @@
   height: 100%;
   overflow: hidden;
 
-  &:hover {
-    .image {
-      transform: scale3d(1.05, 1.05, 1);
-    }
-
-    .info {
-      &::before {
-        height: 100%;
+  @media (hover: hover) and (pointer: fine) {
+    &:hover {
+      .image {
+        transform: scale3d(1.05, 1.05, 1);
       }
-    }
 
-    .iconActive {
-      color: var(--white-color);
+      .info {
+        &::before {
+          height: 100%;
+        }
+      }
+
+      .iconActive {
+        color: var(--white-color);
+      }
     }
   }
 }

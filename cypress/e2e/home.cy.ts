@@ -12,6 +12,7 @@ describe('Home page', () => {
 
   it('navigates to the favorite characters page', () => {
     cy.get('a[href="/favorites"]').click();
+    cy.wait(1000);
     cy.url().should('include', '/favorites');
   });
 
