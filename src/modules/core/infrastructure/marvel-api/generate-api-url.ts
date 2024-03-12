@@ -10,15 +10,15 @@ export function generateMarvelApiUrl(endpoint: string, params?: BaseEndpointPara
     throw new Error('Missing Marvel API keys');
   }
 
-  const ts = new Date().getTime();
+  const timeStamp = new Date().getTime();
   const hash = crypto
     .createHash('md5')
-    .update(ts + privateKey + publicKey)
+    .update(timeStamp + privateKey + publicKey)
     .digest('hex');
 
   const additionalParams = Object.entries(params || {})
     .map(([key, value]) => `&${key}=${value}`)
     .join('');
 
-  return `http://gateway.marvel.com/v1/public/${endpoint}?ts=${ts}&apikey=${publicKey}&hash=${hash}${additionalParams}`;
+  return `http://gateway.marvel.com/v1/public/${endpoint}?ts=${timeStamp}&apikey=${publicKey}&hash=${hash}${additionalParams}`;
 }

@@ -1,6 +1,6 @@
 import { useRef, useEffect, useMemo } from 'react';
 
-export function debounce<F extends (...args: any[]) => any>(
+export function debounce<F extends (...args: unknown[]) => unknown>(
   callback: F,
   wait: number
 ): (...args: Parameters<F>) => void {
@@ -19,7 +19,7 @@ export function debounce<F extends (...args: any[]) => any>(
   };
 }
 
-export const useDebounce = <F extends (...args: any[]) => any>(
+export const useDebounce = <F extends (...args: unknown[]) => unknown>(
   callback: F,
   wait: number
 ): (() => void) => {
