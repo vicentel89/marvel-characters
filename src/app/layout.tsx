@@ -13,7 +13,8 @@ const robotoCondensed = Roboto_Condensed({
 
 export const metadata = {
   title: 'Marvel characters',
-  description: 'An app to view Marvel characters',
+  description: 'Explore the Marvel universe and its characters.',
+  keywords: ['marvel', 'characters', 'comics'],
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {

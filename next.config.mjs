@@ -10,6 +10,7 @@ const nextConfig = {
       },
     ],
     deviceSizes: [480, 768, 1024, 1920],
+    imageSizes: [124, 140, 160, 190, 210, 320],
   },
 };
 
