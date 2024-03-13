@@ -11,8 +11,9 @@ describe('Home page', () => {
   });
 
   it('navigates to the favorite characters page', () => {
+    cy.intercept('/favorites*').as('favoritesPage');
     cy.get('a[href="/favorites"]').click();
-    cy.wait(1000);
+    cy.wait('@favoritesPage');
     cy.url().should('include', '/favorites');
   });
 
@@ -110,32 +111,38 @@ describe('Home page', () => {
         saveName('thirdCharacterName');
       });
 
-      cy.wait(1000);
-
       // Search in favorites page
-      cy.get('a[href="/favorites"]').click();
-      cy.url().should('include', '/favorites');
+      cy.intercept(/\/favorites/).as('favoritesPage');
+      cy.intercept(/\/favorites\?search=.*/).as('favoritesSearchPage');
+      cy.visit('/favorites');
 
       cy.get('@firstCharacterName').then((characterName) => {
         const name = characterName as unknown as string;
         cy.getBySel('character-search-input').type(name);
+        cy.wait('@favoritesSearchPage');
+
         cy.getBySel('character-card').should('have.length', 1).contains(name);
       });
 
       cy.get('@secondCharacterName').then((characterName) => {
         const name = characterName as unknown as string;
         cy.getBySel('character-search-input').clear();
-        cy.wait(1000);
+        cy.wait('@favoritesPage');
+
         cy.getBySel('character-search-input').type(name);
-        cy.wait(1000);
+        cy.wait('@favoritesSearchPage');
+
         cy.getBySel('character-card').should('have.length', 1).contains(name);
       });
 
       cy.get('@thirdCharacterName').then((characterName) => {
         const name = characterName as unknown as string;
         cy.getBySel('character-search-input').clear();
-        cy.wait(1000);
+        cy.wait('@favoritesPage');
+
         cy.getBySel('character-search-input').type(name);
+        cy.wait('@favoritesSearchPage');
+
         cy.getBySel('character-card').should('not.exist');
       });
     });
