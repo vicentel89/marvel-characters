@@ -64,7 +64,7 @@ The project is built using [Next.js v14 with the app router](https://nextjs.org/
 
 There are two main folders in the project:
 
-- `app`: It contains all the code related to components, pages, and styles. The files are [organized by feature/route](https://nextjs.org/docs/app/building-your-application/routing/colocation#split-project-files-by-feature-or-route).
+- `app`: It contains all the code related to components, pages, and styles. The files are [organized by feature/route](https://nextjs.org/docs/app/building-your-application/routing/colocation#split-project-files-by-feature-or-route). This strategy splits specific application code into the route segments that use them. For shared components(or any other shared file like hooks, utils, etc.), the files should be in the closest parent folder that uses them. For shared styles, the files should be in the `app/_styles` folder.
 
 - `modules`: It contains the code related to the business logic of the application. The files are organized by module.
   Inside each module folder, the files are organized by layer following the hexagonal architecture. The layers are:
